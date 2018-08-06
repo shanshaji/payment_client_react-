@@ -15,7 +15,7 @@ import registerServiceWorker from './registerServiceWorker';
 import FixedMenuLayout from './layouts/fixed_menu_layout';
 import './assets/app/css/custom.css';
 
-import Payment from './containers/payment/index';
+import Payment from './containers/payment/new';
 
 const createStoreWithMiddleware = applyMiddleware(ReduxThunk)(createStore);
 

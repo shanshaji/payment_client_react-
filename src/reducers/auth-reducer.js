@@ -1,4 +1,4 @@
-import { AUTHENTICATED, UNAUTHENTICATED, AUTHENTICATION_ERROR} from '../actions/payment-actions';
+import { AUTHENTICATED, UNAUTHENTICATED, AUTHENTICATION_ERROR} from '../actions/payments/request-action';
 
 export default function(state = {}, action) {
     switch (action.type){

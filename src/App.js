@@ -1,9 +1,9 @@
-import React, { Component } from '../../../../.cache/typescript/2.9/node_modules/@types/react';
+import React, { Component } from 'react';
 import {
   Header,
   Button
 } from 'semantic-ui-react';
-import sha256 from '../../../../.cache/typescript/2.9/node_modules/@types/crypto-js/sha256';
+import sha256 from 'sha256';
 class App extends Component {
   render() {
     return (

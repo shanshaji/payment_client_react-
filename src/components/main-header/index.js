@@ -1,4 +1,4 @@
-import React, { Component } from '../../../../../../.cache/typescript/2.9/node_modules/@types/react'
+import React, { Component } from 'react'
 import {
     Container,
     Divider,
@@ -7,7 +7,7 @@ import {
     Image,
     Menu,
   } from 'semantic-ui-react';
-  import {Link} from '../../../../../../.cache/typescript/2.9/node_modules/@types/react-router-dom';
+  import {Link} from 'react-router-dom';
 
 class MainHeader extends Component{
     constructor(props){

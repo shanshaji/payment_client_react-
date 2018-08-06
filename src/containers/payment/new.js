@@ -1,7 +1,7 @@
-import React, { Component } from '../../../../../../.cache/typescript/2.9/node_modules/@types/react';
-import { connect } from '../../../../../../.cache/typescript/2.9/node_modules/@types/react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import signInAction from '../../actions/payment-actions';
-import { bindActionCreators } from '../../../../../../.cache/typescript/2.9/node_modules/redux';
+import { bindActionCreators } from 'redux';
 import { Formik } from 'formik';
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
 
@@ -32,21 +32,6 @@ class Payment extends Component{
                 transaction_date:'',
                 payment_gateway_merchant_reference:''
                 }}
-            // validate={values => {
-            //     // same as above, but feel free to move this into a class method now.
-            //     let errors = {};
-            //     if (!values.email) {
-            //         errors.email = 'Enter email address';
-            //     } else if (
-            //         !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-            //     ) {
-            //         errors.email = 'Invalid email address';
-            //     }
-            //     if (!values.password) {
-            //         errors.password = 'Enter password';
-            //     }
-            //     return errors;
-            //     }}
             onSubmit={(
                 values,
                 { setSubmitting, setErrors }
@@ -66,12 +51,6 @@ class Payment extends Component{
                 }) => (
                     <Formik
             enableReinitialize={true}
-            initialValues={{name: (this.props.movie ? this.props.movie.name : ''),
-                            language_id: (this.props.movie ? this.props.movie.language.id : ''),
-                            format_id: (this.props.movie && this.props.movie.format && this.props.movie.format.id ? this.props.movie.format.id : ''),
-                            certificate_id: (this.props.movie && this.props.movie.certificate && this.props.movie.certificate.id? this.props.movie.certificate.id : ''),
-                            index_image:  (this.props.movie && this.props.movie.index_image ? this.props.movie.index_image : ''),
-            }}
             validationSchema={
                 Yup.object().shape({
                     name: Yup.string()
@@ -110,66 +89,79 @@ class Payment extends Component{
                                 label="IFSC"
                                 className={'form-control ' + (touched.name && (errors.name ? 'is-invalid' : 'is-valid'))}
                                 type="text" 
-                                name="name"  
+                                name="bank_ifsc_code"  
                                 placeholder="Enter IFSC" 
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.bank_ifsc_code}
+                            />
+                            { errors.name && touched.name && <div className="invalid-feedback">{errors.name}</div>}
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Input 
+                                label="Account Number"
+                                className={'form-control ' + (touched.name && (errors.name ? 'is-invalid' : 'is-valid'))}
+                                type="text" 
+                                name="bank_account_number"  
+                                placeholder="Enter account number" 
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.bank_account_number}
+                            />
+                            { errors.name && touched.name && <div className="invalid-feedback">{errors.name}</div>}
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Input 
+                                label="Amount"
+                                className={'form-control ' + (touched.name && (errors.name ? 'is-invalid' : 'is-valid'))}
+                                type="text" 
+                                name="amount"  
+                                placeholder="Enter amount" 
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.amount}
+                            />
+                            { errors.name && touched.name && <div className="invalid-feedback">{errors.name}</div>}
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Input 
+                                label="Merchant Transaction Reference"
+                                className={'form-control ' + (touched.name && (errors.name ? 'is-invalid' : 'is-valid'))}
+                                type="text" 
+                                name="merchant_transaction_ref"  
+                                placeholder="Enter details" 
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 value={values.name}
                             />
                             { errors.name && touched.name && <div className="invalid-feedback">{errors.name}</div>}
-                            {/* <Dropzone onDrop={this.onDrop.bind(this)} 
-                            accept=".jpeg,.png,.jpg"
-                            className='dropzone dropzone-style'
-                            activeClassName='active-dropzone'
-                            acceptClassName='active-dropzone'
-                            multiple={false}
-                                >
-                                <figure>
-                                    <img className="img image-style" src={this.state.files[0]? this.state.files[0].preview : this.state.data.image ? this.state.data.image : "https://s3.ap-south-1.amazonaws.com/distributer-app/avatar.png" } />
-                                    <figcaption>
-                                    <div>
-                                        click to select image
-                                    </div>
-                                    </figcaption>
-                                </figure>
-                            </Dropzone> */}
                         </Form.Group>
                         <Form.Group>
-                            <InputSelect
-                                label="Language"
-                                value={values.language_id}
-                                onChange={setFieldValue}
-                                onBlur={setFieldTouched}
-                                options={this.state.languages}
-                                name='language_id'
-                                placeholder='Select language'
+                            <Form.Input 
+                                label="transaction_date"
+                                className={'form-control ' + (touched.name && (errors.name ? 'is-invalid' : 'is-valid'))}
+                                type="text" 
+                                name="transaction_date"  
+                                placeholder="Enter date" 
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.transaction_date}
                             />
-                            { errors.language_id && touched.language_id &&  <div style={{ color: 'red', marginTop: '.5rem' }}>
-                                {errors.language_id}
-                            </div>}
-                            <InputSelect
-                                label="Format"
-                                value={values.format_id}
-                                onChange={setFieldValue}
-                                onBlur={setFieldTouched}
-                                error={errors.format_id}
-                                touched={touched.format_id}
-                                options={this.state.formats}
-                                name='format_id'
-                                placeholder='Select format'
+                            { errors.name && touched.name && <div className="invalid-feedback">{errors.name}</div>}
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Input 
+                                label="payment gateway merchant reference"
+                                className={'form-control ' + (touched.name && (errors.name ? 'is-invalid' : 'is-valid'))}
+                                type="text" 
+                                name="payment_gateway_merchant_reference"
+                                placeholder="Enter date" 
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.payment_gateway_merchant_reference}
                             />
-                            <InputSelect
-                                label="Certificate"
-                                value={values.certificate_id}
-                                onChange={setFieldValue}
-                                onBlur={setFieldTouched}
-                                error={errors.certificate_id}
-                                touched={touched.certificate_id}
-                                options={this.state.certificates}
-                                name='certificate_id'
-                                placeholder='Select certificates'
-                            />
-                        </Form.Group>  
+                            { errors.name && touched.name && <div className="invalid-feedback">{errors.name}</div>}
+                        </Form.Group>
                         <hr />
                         <SubmitButton isSubmitting={isSubmitting}/>                    
                         <div>
@@ -177,16 +169,8 @@ class Payment extends Component{
                     </Form>
                 )}
                 />
-        );
+        )
     }
 }
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ signInAction }, dispatch);
-}
-
-function mapStateToProps(state){
-    return {errorMessage: state.auth.error}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Payment);
+export default Payment
